@@ -10,10 +10,35 @@
 
 A robust, thread-safe desktop event ticketing system designed using Core Java, Object-Oriented Principles, Java Collections, Custom Exception Handling, SQLite JDBC Persistence, AWT Graphical User Interface, and Multithreading with Synchronization.
 
-### 📄 Course Assignment Report
-* **PDF Report (14 Pages):** [`CSA09_Course_Assignment_Report.pdf`](./CSA09_Course_Assignment_Report.pdf)
-* **HTML Report (Printable):** [`CSA09_Course_Assignment_Report.html`](./CSA09_Course_Assignment_Report.html)
+### 📄 Course Assignment Report (20 Pages - Topic on Every Page)
+* **Word Document (.docx - 20 Pages):** [`CSA09_Course_Assignment_Report.docx`](./CSA09_Course_Assignment_Report.docx)
+* **PDF Report (20 Pages):** [`CSA09_Course_Assignment_Report.pdf`](./CSA09_Course_Assignment_Report.pdf)
+* **HTML Report (Printable 20 Pages):** [`CSA09_Course_Assignment_Report.html`](./CSA09_Course_Assignment_Report.html)
 * **Markdown Report:** [`CSA09_Course_Assignment_Report.md`](./CSA09_Course_Assignment_Report.md)
+
+#### 20-Page Topic Outline:
+1. **Page 1:** Title Page & Student Identification
+2. **Page 2:** Problem Statement & Background Context
+3. **Page 3:** Objectives & Course Outcomes (CO1–CO4) Mapping
+4. **Page 4:** System Requirements & Environment Specifications
+5. **Page 5:** System Architecture & Relational Data Design
+6. **Page 6:** GUI Layout & Event-Driven Architecture Plan
+7. **Page 7:** Algorithm & Pseudocode for Booking Workflow
+8. **Page 8:** Source Code – Core Event Domain Models (Part 1: Event & ConcertEvent)
+9. **Page 9:** Source Code – Sports Event & Seat Entity (Part 2: SportsEvent, SeatStatus, Seat)
+10. **Page 10:** Source Code – Custom Exception & Inventory Engine (Part 1: bookSeat)
+11. **Page 11:** Source Code – Inventory Engine (Part 2: cancelSeat & getAvailableSeats)
+12. **Page 12:** Source Code – Database Access Layer (BookingDAO)
+13. **Page 13:** Source Code – Graphical User Interface (Part 1: Layout & Seat Matrix)
+14. **Page 14:** Source Code – Graphical User Interface (Part 2: Handlers & Listeners)
+15. **Page 15:** Source Code – Concurrency Simulation & Launcher (BookingSimulation & Main)
+16. **Page 16:** Test Plan & Test Execution Matrix (TC1–TC6)
+17. **Page 17:** Execution Outputs & Screenshot Evidence
+18. **Page 18:** In-Depth Technical Analysis & Discussion
+19. **Page 19:** Modern Tool Usage, Debugging & SDG Relevance
+20. **Page 20:** Conclusion, Future Enhancements & References
+
+---
 
 ### 🏗️ Architecture & Package Structure
 ```
@@ -64,36 +89,4 @@ java -cp "lib/*:bin" com.swiftbook.booking.concurrency.BookingSimulation
 ## 💻 Beginner Java Programming Exercises
 
 This repository also contains 30 foundational Java console programs:
-
-| # | Program File | Description |
-|---|---|---|
-| 1 | `Arithmetic.java` | Basic arithmetic calculations |
-| 2 | `MaxOfTwo.java` | Maximum of two numbers |
-| 3 | `LeapYear.java` | Leap year checking |
-| 4 | `Fibonacci.java` | Fibonacci series generator |
-| 5 | `Factorial.java` | Factorial calculation |
-| 6 | `RightTrianglePattern.java` | Right triangle star pattern |
-| 7 | `Search.java` | Linear search in integer array |
-| 8 | `GCD.java` | Greatest Common Divisor |
-| 9 | `Prime.java` | Prime number verification |
-| 10 | `Sort.java` | Selection sort on array |
-| 11 | `Table.java` | Multiplication table generator |
-| 12 | `LeftTrianglePattern.java` | Left-aligned triangle star pattern |
-| 13 | `LCM.java` | Least Common Multiple |
-| 14 | `BinaryToDecimal.java` | Binary to decimal conversion |
-| 15 | `DecimalToBinary.java` | Decimal to binary conversion |
-| 16 | `Sum.java` | Sum of two numbers |
-| 17 | `Product.java` | Product of two numbers |
-| 18 | `Power.java` | Power calculation (base^exp) |
-| 19 | `AreaOfCircle.java` | Area of a circle |
-| 20 | `Sphere.java` | Volume and surface area of sphere |
-| 21 | `Palindrome.java` | Palindrome check |
-| 22 | `Armstrong.java` | Armstrong number check |
-| 23 | `RightTriangleNumberPattern.java` | Number pattern triangle |
-| 24 | `PerfectNumber.java` | Perfect number check |
-| 25 | `MaxInArray.java` | Maximum element in array |
-| 26 | `SecondMaxInArray.java` | Second maximum in array |
-| 27 | `MinInArray.java` | Minimum element in array |
-| 28 | `SecondMinInArray.java` | Second minimum in array |
-| 29 | `BubbleSort.java` | Bubble sort implementation |
-| 30 | `InsertionSort.java` | Insertion sort implementation |
+`Arithmetic.java`, `MaxOfTwo.java`, `LeapYear.java`, `Fibonacci.java`, `Factorial.java`, `RightTrianglePattern.java`, `Search.java`, `GCD.java`, `Prime.java`, `Sort.java`, `Table.java`, `LeftTrianglePattern.java`, `LCM.java`, `BinaryToDecimal.java`, `DecimalToBinary.java`, `Sum.java`, `Product.java`, `Power.java`, `AreaOfCircle.java`, `Sphere.java`, `Palindrome.java`, `Armstrong.java`, `RightTriangleNumberPattern.java`, `PerfectNumber.java`, `MaxInArray.java`, `SecondMaxInArray.java`, `MinInArray.java`, `SecondMinInArray.java`, `BubbleSort.java`, `InsertionSort.java`.

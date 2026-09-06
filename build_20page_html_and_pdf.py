@@ -1,139 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>CSA09 Course Assignment Report - Kadiyala Showkath Ali</title>
-<style>
-  @page {
-    size: A4;
-    margin: 0;
-  }
-  * {
-    box-sizing: border-box;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #f0f2f5;
-    font-family: "Liberation Serif", "Times New Roman", Times, serif;
-    font-size: 10.5pt;
-    line-height: 1.35;
-    color: #111;
-  }
-  .page {
-    width: 210mm;
-    height: 297mm;
-    padding: 16mm 22mm 16mm 22mm;
-    margin: 10mm auto;
-    background: #fff;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    page-break-after: always;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  @media print {
-    body {
-      background: none;
-    }
-    .page {
-      margin: 0;
-      box-shadow: none;
-      width: 210mm;
-      height: 297mm;
-    }
-  }
-  .page-header {
-    font-size: 8.5pt;
-    color: #555;
-    margin-bottom: 6mm;
-  }
-  .page-content {
-    flex-grow: 1;
-  }
-  .page-footer {
-    font-size: 9pt;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 4mm;
-  }
-  h1, h2, h3, h4 {
-    margin: 0;
-    font-family: "Liberation Sans", "Helvetica Neue", Arial, sans-serif;
-    color: #000;
-  }
-  h1.sec-title {
-    font-size: 11pt;
-    font-weight: bold;
-    margin-top: 6pt;
-    margin-bottom: 4pt;
-    text-transform: uppercase;
-  }
-  h2.subsec-title {
-    font-size: 10pt;
-    font-weight: bold;
-    margin-top: 6pt;
-    margin-bottom: 3pt;
-  }
-  p {
-    margin: 0 0 6pt 0;
-    text-align: justify;
-  }
-  ul {
-    margin: 0 0 6pt 0;
-    padding-left: 18pt;
-  }
-  li {
-    margin-bottom: 3pt;
-    text-align: justify;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 6pt 0 8pt 0;
-    font-size: 9pt;
-  }
-  th, td {
-    border: 1px solid #777;
-    padding: 4pt 6pt;
-    vertical-align: top;
-  }
-  th {
-    background-color: #f2f2f2;
-    text-align: left;
-    font-weight: bold;
-  }
-  pre, code {
-    font-family: "Consolas", "Courier New", Courier, monospace;
-  }
-  pre {
-    background-color: #fafafa;
-    border-left: 3px solid #ccc;
-    padding: 4pt 7pt;
-    font-size: 8.2pt;
-    line-height: 1.2;
-    margin: 3pt 0 6pt 0;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
-  .file-label {
-    font-weight: bold;
-    font-style: italic;
-    font-size: 9pt;
-    margin-top: 5pt;
-    margin-bottom: 2pt;
-  }
-  .bold {
-    font-weight: bold;
-  }
-</style>
-</head>
-<body>
-<div class="page">
+import os
+import subprocess
+
+html_pages = [
+    # PAGE 1
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content" style="display: flex; flex-direction: column; justify-content: flex-start; padding-top: 30mm;">
     <h1 style="font-size: 22pt; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4pt;">SIMATS ENGINEERING</h1>
@@ -158,7 +28,10 @@
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 1 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 2
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">1. PROBLEM STATEMENT &amp; BACKGROUND CONTEXT</h1>
@@ -179,7 +52,10 @@
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 2 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 3
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">2. OBJECTIVES &amp; COURSE OUTCOMES (CO) MAPPING</h1>
@@ -201,7 +77,10 @@
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 3 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 4
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">3. SYSTEM REQUIREMENTS &amp; SPECIFICATIONS</h1>
@@ -258,7 +137,10 @@
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 4 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 5
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">4. SYSTEM ARCHITECTURE &amp; DATA DESIGN</h1>
@@ -324,7 +206,10 @@
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 5 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 6
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">5. GUI LAYOUT &amp; EVENT-DRIVEN ARCHITECTURE PLAN</h1>
@@ -356,7 +241,10 @@
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 6 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 7
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">6. ALGORITHM &amp; PSEUDOCODE FOR THE BOOKING WORKFLOW</h1>
@@ -399,7 +287,10 @@ END</pre>
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 7 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 8
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">7. SOURCE CODE – CORE EVENT DOMAIN MODELS (PART 1)</h1>
@@ -458,7 +349,10 @@ public class ConcertEvent extends Event {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 8 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 9
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">8. SOURCE CODE – SPORTS EVENT &amp; SEAT ENTITY (PART 2)</h1>
@@ -519,7 +413,10 @@ public class Seat {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 9 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 10
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">9. SOURCE CODE – CUSTOM EXCEPTION &amp; INVENTORY (PART 1)</h1>
@@ -574,7 +471,10 @@ public class SeatInventory {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 10 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 11
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">10. SOURCE CODE – INVENTORY ENGINE (PART 2)</h1>
@@ -611,7 +511,10 @@ public class SeatInventory {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 11 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 12
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">11. SOURCE CODE – DATABASE ACCESS LAYER (DAO)</h1>
@@ -674,7 +577,10 @@ public class BookingDAO {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 12 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 13
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">12. SOURCE CODE – GRAPHICAL USER INTERFACE (AWT GUI - PART 1)</h1>
@@ -716,7 +622,10 @@ public class BookingGUI extends Frame {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 13 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 14
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">13. SOURCE CODE – GRAPHICAL USER INTERFACE (AWT GUI - PART 2)</h1>
@@ -764,7 +673,10 @@ public class BookingGUI extends Frame {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 14 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 15
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">14. SOURCE CODE – CONCURRENCY SIMULATION &amp; LAUNCHER</h1>
@@ -808,7 +720,10 @@ public class BookingSimulation {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 15 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 16
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">15. TEST PLAN &amp; TEST EXECUTION MATRIX</h1>
@@ -873,7 +788,10 @@ public class BookingSimulation {
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 16 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 17
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">16. EXECUTION OUTPUTS &amp; SCREENSHOT EVIDENCE</h1>
@@ -908,7 +826,10 @@ All test cases completed.</pre>
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 17 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 18
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">17. IN-DEPTH TECHNICAL ANALYSIS &amp; DISCUSSION</h1>
@@ -920,7 +841,10 @@ All test cases completed.</pre>
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 18 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 19
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">18. MODERN TOOL USAGE, DEBUGGING &amp; SDG RELEVANCE</h1>
@@ -939,7 +863,10 @@ All test cases completed.</pre>
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 19 of 20</span>
   </div>
-</div><div class="page">
+</div>""",
+
+    # PAGE 20
+    """<div class="page">
   <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
   <div class="page-content">
     <h1 class="sec-title">19. CONCLUSION, FUTURE ENHANCEMENTS &amp; REFERENCES</h1>
@@ -962,6 +889,169 @@ All test cases completed.</pre>
     <span>Concurrent Event-Ticket Booking Application</span>
     <span class="bold">Page 20 of 20</span>
   </div>
-</div>
+</div>"""
+]
+
+html_template = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSA09 Course Assignment Report - Kadiyala Showkath Ali</title>
+<style>
+  @page {{
+    size: A4;
+    margin: 0;
+  }}
+  * {{
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }}
+  body {{
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    font-family: "Liberation Serif", "Times New Roman", Times, serif;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    color: #111;
+  }}
+  .page {{
+    width: 210mm;
+    height: 297mm;
+    padding: 16mm 22mm 16mm 22mm;
+    margin: 10mm auto;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }}
+  @media print {{
+    body {{
+      background: none;
+    }}
+    .page {{
+      margin: 0;
+      box-shadow: none;
+      width: 210mm;
+      height: 297mm;
+    }}
+  }}
+  .page-header {{
+    font-size: 8.5pt;
+    color: #555;
+    margin-bottom: 6mm;
+  }}
+  .page-content {{
+    flex-grow: 1;
+  }}
+  .page-footer {{
+    font-size: 9pt;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4mm;
+  }}
+  h1, h2, h3, h4 {{
+    margin: 0;
+    font-family: "Liberation Sans", "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+  }}
+  h1.sec-title {{
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 6pt;
+    margin-bottom: 4pt;
+    text-transform: uppercase;
+  }}
+  h2.subsec-title {{
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 6pt;
+    margin-bottom: 3pt;
+  }}
+  p {{
+    margin: 0 0 6pt 0;
+    text-align: justify;
+  }}
+  ul {{
+    margin: 0 0 6pt 0;
+    padding-left: 18pt;
+  }}
+  li {{
+    margin-bottom: 3pt;
+    text-align: justify;
+  }}
+  table {{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6pt 0 8pt 0;
+    font-size: 9pt;
+  }}
+  th, td {{
+    border: 1px solid #777;
+    padding: 4pt 6pt;
+    vertical-align: top;
+  }}
+  th {{
+    background-color: #f2f2f2;
+    text-align: left;
+    font-weight: bold;
+  }}
+  pre, code {{
+    font-family: "Consolas", "Courier New", Courier, monospace;
+  }}
+  pre {{
+    background-color: #fafafa;
+    border-left: 3px solid #ccc;
+    padding: 4pt 7pt;
+    font-size: 8.2pt;
+    line-height: 1.2;
+    margin: 3pt 0 6pt 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }}
+  .file-label {{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 9pt;
+    margin-top: 5pt;
+    margin-bottom: 2pt;
+  }}
+  .bold {{
+    font-weight: bold;
+  }}
+</style>
+</head>
+<body>
+{''.join(html_pages)}
 </body>
 </html>
+"""
+
+with open("CSA09_Course_Assignment_Report.html", "w", encoding="utf-8") as f:
+    f.write(html_template)
+print(f"Generated 20-page HTML report (Total pages in array: {len(html_pages)})")
+
+# Generate PDF with Chrome headless
+chrome_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+pwd = os.getcwd()
+cmd = [
+    chrome_path,
+    "--headless",
+    "--disable-gpu",
+    "--print-to-pdf=CSA09_Course_Assignment_Report.pdf",
+    "--no-pdf-header-footer",
+    f"file://{pwd}/CSA09_Course_Assignment_Report.html"
+]
+res = subprocess.run(cmd, capture_output=True, text=True)
+print("Chrome execution finished with exit code:", res.returncode)
+
+# Verify page count of generated PDF
+with open("CSA09_Course_Assignment_Report.pdf", "rb") as f:
+    content = f.read()
+    pages = content.count(b'/Type /Page') - content.count(b'/Type /Pages')
+    print(f"Verified PDF Page Count: {pages}")
