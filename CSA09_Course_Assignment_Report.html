@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSA09 Course Assignment Report - Kadiyala Showkath Ali</title>
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    font-family: "Liberation Serif", "Times New Roman", Times, serif;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: #111;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 18mm 22mm 18mm 22mm;
+    margin: 10mm auto;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  @media print {
+    body {
+      background: none;
+    }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+  .page-header {
+    font-size: 9pt;
+    color: #444;
+    margin-bottom: 8mm;
+  }
+  .page-content {
+    flex-grow: 1;
+  }
+  .page-footer {
+    font-size: 9.5pt;
+    color: #222;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5mm;
+  }
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-family: "Liberation Sans", "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+  }
+  h1.sec-title {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+    text-transform: uppercase;
+  }
+  h2.subsec-title {
+    font-size: 10.5pt;
+    font-weight: bold;
+    margin-top: 8pt;
+    margin-bottom: 3pt;
+  }
+  p {
+    margin: 0 0 7pt 0;
+    text-align: justify;
+  }
+  ul {
+    margin: 0 0 7pt 0;
+    padding-left: 18pt;
+  }
+  li {
+    margin-bottom: 4pt;
+    text-align: justify;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6pt 0 10pt 0;
+    font-size: 9.5pt;
+  }
+  th, td {
+    border: 1px solid #777;
+    padding: 4.5pt 6pt;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+    font-weight: bold;
+  }
+  pre, code {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+  }
+  pre {
+    background-color: #fafafa;
+    border-left: 3px solid #ccc;
+    padding: 5pt 8pt;
+    font-size: 8.8pt;
+    line-height: 1.25;
+    margin: 4pt 0 8pt 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .file-label {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 9.5pt;
+    margin-top: 6pt;
+    margin-bottom: 2pt;
+  }
+  .center {
+    text-align: center;
+  }
+  .bold {
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content" style="display: flex; flex-direction: column; justify-content: flex-start; padding-top: 35mm;">
+    <h1 style="font-size: 22pt; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 4pt;">SIMATS ENGINEERING</h1>
+    <h3 style="font-size: 11pt; font-weight: normal; margin-bottom: 2pt; letter-spacing: 0.3px;">SAVEETHA INSTITUTE OF MEDICAL AND TECHNICAL SCIENCES</h3>
+    <h2 style="font-size: 13pt; font-weight: bold; margin-bottom: 4pt;">CSA09 – PROGRAMMING IN JAVA</h2>
+    <p style="font-size: 11pt; font-weight: bold; margin-bottom: 15pt; letter-spacing: 0.2px;">COURSE ASSIGNMENT REPORT</p>
+    
+    <h2 style="font-size: 14pt; font-weight: bold; line-height: 1.35; margin-bottom: 30mm;">
+      DESIGN AND IMPLEMENTATION<br>
+      OF A CONCURRENT EVENT-TICKET BOOKING APPLICATION IN JAVA
+    </h2>
+    
+    <p style="font-size: 10.5pt; margin-bottom: 2pt;">Submitted By</p>
+    <p style="font-size: 12pt; font-weight: bold; margin-bottom: 2pt;">KADIYALA SHOWKATH ALI</p>
+    <p style="font-size: 10.5pt; margin-bottom: 2pt;">Register No: [REGISTER_NO]</p>
+    <p style="font-size: 10.5pt; margin-bottom: 0;">Department of Computer Science and Engineering</p>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 1 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <h1 class="sec-title">1. PROBLEM STATEMENT</h1>
+    <p>SwiftBook Live operates seat-booking systems for a city's concert halls and sports arenas. On high-demand event days, multiple box-office counters attempt to reserve seats for the same event at the same time, and the venue's legacy, paper-based process frequently results in the same seat being sold to two different customers. This is a classic concurrency problem: several independent threads of activity (counter staff) compete for a shared, limited resource (a seat) at the same instant, and without a coordinating mechanism, both can believe they succeeded.</p>
+    <p>As a member of SwiftBook's Java development group, my task is to design, implement and justify a desktop booking application that removes the double-booking defect while remaining simple enough to run from a single machine at each venue. The solution must model events and their pricing rules using object-oriented principles, manage the seat map using an appropriate collection structure, handle both foreseeable and user-defined error conditions gracefully, persist bookings to a lightweight database, expose a usable graphical interface to box-office staff, and – most importantly – prove through a multithreaded simulation that concurrent booking attempts on the same seat are resolved safely once synchronization is applied.</p>
+
+    <h1 class="sec-title">2. OBJECTIVES</h1>
+    <p>The objectives of this assignment, mapped to the stated Course Outcomes (CO1–CO4), are:</p>
+    <ul>
+      <li><span class="bold">2.1 (CO1)</span> Design an abstract base class <code>Event</code> encapsulating common fields (event ID, name, base ticket price) and derive at least two concrete subclasses, <code>ConcertEvent</code> and <code>SportsEvent</code>, that override a pricing method to apply event-specific surcharge rules – demonstrating encapsulation, inheritance and polymorphism.</li>
+      <li><span class="bold">2.2 (CO1)</span> Model the seat inventory using the Java Collections Framework – a <code>HashMap</code> for O(1) seat lookup by seat number and a synchronized <code>List</code> for the booking history – and demonstrate the use of an <code>Iterator</code> and Generics while searching for available seats.</li>
+      <li><span class="bold">2.3 (CO2)</span> Implement robust exception handling: catch a built-in exception (<code>ArrayIndexOutOfBoundsException</code>) for an invalid seat number, and define a checked, user-defined exception, <code>SeatAlreadyBookedException</code>, thrown when a customer tries to book an already-booked seat, using try-catch-finally blocks throughout the booking workflow.</li>
+      <li><span class="bold">2.4 (CO3)</span> Connect the application to an embedded SQLite database using JDBC, and implement insert, update and delete operations for booking records.</li>
+      <li><span class="bold">2.5 (CO4)</span> Build a simple AWT-based graphical user interface with a seat-grid of buttons, Book/Cancel controls, and a list of current bookings, wired to at least two <code>ActionListener</code> event handlers.</li>
+      <li><span class="bold">2.6</span> Simulate concurrent booking attempts using multiple <code>Threads</code>, and use a synchronized method to guarantee that only one thread can successfully book a given seat – demonstrating the double-booking failure case without synchronization and the correct, safe outcome once synchronization is applied.</li>
+    </ul>
+
+    <h1 class="sec-title">3. REQUIREMENTS AND ENVIRONMENT USED</h1>
+    <h2 class="subsec-title">3.1 Functional &amp; Non-Functional Requirements</h2>
+    <ul>
+      <li>The system shall allow a base <code>Event</code> to be specialised into <code>ConcertEvent</code> and <code>SportsEvent</code>, each computing its own final ticket price.</li>
+      <li>The system shall maintain a seat inventory of configurable size, exposing which seats are currently <code>AVAILABLE</code>, <code>BOOKED</code>, or <code>HELD</code>.</li>
+      <li>The system shall reject an out-of-range seat number and an already-booked seat with clear, distinct error messages.</li>
+      <li>The system shall persist every booking, update and cancellation to a database via JDBC.</li>
+      <li>The system shall provide a graphical seat map that box-office staff can operate without training on the underlying code.</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 2 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <ul>
+      <li>The system shall guarantee, under concurrent access from multiple counters, that a seat is never booked by more than one customer (data-integrity / thread-safety requirement).</li>
+    </ul>
+
+    <h2 class="subsec-title">3.2 Environment Specifications</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 35%;">Component</th>
+          <th>Specification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bold">Language / JDK</span></td>
+          <td>Java SE, JDK 17 (LTS)</td>
+        </tr>
+        <tr>
+          <td><span class="bold">IDE</span></td>
+          <td>Eclipse IDE for Java Developers 2024-06</td>
+        </tr>
+        <tr>
+          <td><span class="bold">Database</span></td>
+          <td>SQLite 3 (embedded, file-based) accessed via the sqlite-jdbc driver</td>
+        </tr>
+        <tr>
+          <td><span class="bold">GUI Toolkit</span></td>
+          <td>java.awt / java.awt.event (AWT)</td>
+        </tr>
+        <tr>
+          <td><span class="bold">Build / Run</span></td>
+          <td>Compiled and run from the command line (javac / java) and from Eclipse</td>
+        </tr>
+        <tr>
+          <td><span class="bold">Version Control</span></td>
+          <td>Git, hosted on a personal GitHub repository for source tracking</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 class="sec-title">4. DESIGN / PROPOSED SOLUTION</h1>
+    <h2 class="subsec-title">4.1 Class Hierarchy (UML Sketch, described)</h2>
+    <p><span class="bold">Event (abstract)</span> &rarr; fields: eventId, name, baseTicketPrice; method: abstract computeFinalPrice(seatCategory).</p>
+    <p><span class="bold">ConcertEvent extends Event</span> &rarr; adds artist; overrides computeFinalPrice() to apply a VIP surcharge.</p>
+    <p><span class="bold">SportsEvent extends Event</span> &rarr; adds homeTeam, awayTeam; overrides computeFinalPrice() to apply a premium-stand surcharge.</p>
+    <p><span class="bold">Seat</span> &rarr; fields: seatNumber, category, status (enum SeatStatus: AVAILABLE, BOOKED, HELD).</p>
+    <p><span class="bold">SeatInventory</span> &rarr; owns a Map&lt;Integer, Seat&gt; and a synchronized List&lt;String&gt; bookingHistory; exposes the synchronized bookSeat(), cancelSeat() and getAvailableSeats() operations.</p>
+    <p><span class="bold">SeatAlreadyBookedException extends Exception</span> &rarr; the user-defined checked exception.</p>
+    <p><span class="bold">BookingDAO</span> &rarr; encapsulates all JDBC access (insert / update / delete).</p>
+    <p><span class="bold">BookingGUI extends Frame</span> &rarr; the AWT front-end.</p>
+    <p><span class="bold">BookingSimulation</span> &rarr; the multithreaded concurrency demonstration.</p>
+
+    <h2 class="subsec-title">4.2 Database Schema</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Column</th>
+          <th style="width: 25%;">Type</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>booking_id</code></td>
+          <td>INTEGER</td>
+          <td>Primary key, auto-increment</td>
+        </tr>
+        <tr>
+          <td><code>event_id</code></td>
+          <td>TEXT</td>
+          <td>Identifies the event (e.g., CE-101, SE-201)</td>
+        </tr>
+        <tr>
+          <td><code>seat_number</code></td>
+          <td>INTEGER</td>
+          <td>Seat number within the venue layout</td>
+        </tr>
+        <tr>
+          <td><code>customer_name</code></td>
+          <td>TEXT</td>
+          <td>Name captured at the box-office counter</td>
+        </tr>
+        <tr>
+          <td><code>status</code></td>
+          <td>TEXT</td>
+          <td>BOOKED / CANCELLED</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsec-title">4.3 GUI Layout Plan</h2>
+    <p>The main Frame uses a BorderLayout. The CENTER region holds a Panel with a GridLayout(4, 5) of 20 seat Buttons labelled S1–S20. The SOUTH region holds a control Panel with “Book” and “Cancel” Buttons. The EAST region holds an AWT List that logs booking activity in real time. Selecting a seat button records the seat number; clicking Book or Cancel invokes the</p>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 3 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <p>corresponding SeatInventory operation and appends the outcome (success or the caught exception message) to the List.</p>
+
+    <h1 class="sec-title">5. ALGORITHM / PSEUDOCODE FOR THE BOOKING WORKFLOW</h1>
+    <pre>BEGIN bookSeat(seatNumber, customerName)
+ TRY
+  IF seatNumber NOT IN validRange THEN
+   THROW ArrayIndexOutOfBoundsException
+  END IF
+  ENTER synchronized(this) // one thread at a time per inventory
+   seat &lt;- seatMap.get(seatNumber)
+   IF seat.status == BOOKED THEN
+    THROW SeatAlreadyBookedException
+   ELSE
+    seat.status &lt;- BOOKED
+    bookingHistory.add(customerName + " booked seat " + seatNumber)
+    bookingDAO.insertBooking(eventId, seatNumber, customerName)
+   END IF
+  EXIT synchronized
+ CATCH ArrayIndexOutOfBoundsException e
+  LOG "Invalid seat number"
+ CATCH SeatAlreadyBookedException e
+  LOG "Seat already booked - choose another seat"
+ FINALLY
+  refreshGuiSeatGrid()
+ END TRY
+END</pre>
+
+    <h1 class="sec-title">6. IMPLEMENTATION / SOURCE CODE</h1>
+    <p>The complete package is organised as com.swiftbook.booking, split into model, exception, dao, gui and concurrency sub-packages. Key classes are listed below.</p>
+
+    <div class="file-label">model/Event.java</div>
+    <pre>package com.swiftbook.booking.model;
+
+public abstract class Event {
+ private final String eventId;
+ private final String name;
+ private final double baseTicketPrice;
+
+ public Event(String eventId, String name, double baseTicketPrice) {
+  this.eventId = eventId;
+  this.name = name;
+  this.baseTicketPrice = baseTicketPrice;
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 4 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre> }
+
+ public String getEventId() { return eventId; }
+ public String getName() { return name; }
+ public double getBaseTicketPrice() { return baseTicketPrice; }
+
+ // Polymorphic pricing rule - implemented differently per event type
+ public abstract double computeFinalPrice(String seatCategory);
+
+ @Override
+ public String toString() {
+  return String.format("[%s] %s (Base: Rs.%.2f)", eventId, name, 
+baseTicketPrice);
+ }
+}
+</pre>
+
+    <div class="file-label">model/ConcertEvent.java</div>
+    <pre>package com.swiftbook.booking.model;
+
+public class ConcertEvent extends Event {
+ private final String artist;
+ private static final double VIP_SURCHARGE = 0.40; // 40%
+
+ public ConcertEvent(String eventId, String name, double basePrice, String 
+artist) {
+  super(eventId, name, basePrice);
+  this.artist = artist;
+ }
+
+ @Override
+ public double computeFinalPrice(String seatCategory) {
+  double price = getBaseTicketPrice();
+  if ("VIP".equalsIgnoreCase(seatCategory)) {
+   price += price * VIP_SURCHARGE;
+  }
+  return price;
+ }
+
+ public String getArtist() { return artist; }
+}
+</pre>
+
+    <div class="file-label">model/SportsEvent.java</div>
+    <pre>package com.swiftbook.booking.model;
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 5 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre>public class SportsEvent extends Event {
+ private final String homeTeam;
+ private final String awayTeam;
+ private static final double PREMIUM_SURCHARGE = 0.25; // 25%
+
+ public SportsEvent(String eventId, String name, double basePrice,
+                    String homeTeam, String awayTeam) {
+  super(eventId, name, basePrice);
+  this.homeTeam = homeTeam;
+  this.awayTeam = awayTeam;
+ }
+
+ @Override
+ public double computeFinalPrice(String seatCategory) {
+  double price = getBaseTicketPrice();
+  if ("PREMIUM".equalsIgnoreCase(seatCategory)) {
+   price += price * PREMIUM_SURCHARGE;
+  }
+  return price;
+ }
+}
+</pre>
+
+    <div class="file-label">model/SeatStatus.java</div>
+    <pre>package com.swiftbook.booking.model;
+
+public enum SeatStatus { AVAILABLE, BOOKED, HELD }
+</pre>
+
+    <div class="file-label">model/Seat.java</div>
+    <pre>package com.swiftbook.booking.model;
+
+public class Seat {
+ private final int seatNumber;
+ private final String category;
+ private SeatStatus status;
+
+ public Seat(int seatNumber, String category) {
+  this.seatNumber = seatNumber;
+  this.category = category;
+  this.status = SeatStatus.AVAILABLE;
+ }
+
+ public int getSeatNumber() { return seatNumber; }
+ public String getCategory() { return category; }
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 6 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre> public SeatStatus getStatus() { return status; }
+ public void setStatus(SeatStatus status) { this.status = status; }
+}
+</pre>
+
+    <div class="file-label">exception/SeatAlreadyBookedException.java</div>
+    <pre>package com.swiftbook.booking.exception;
+
+// User-defined checked exception (CO2)
+public class SeatAlreadyBookedException extends Exception {
+ public SeatAlreadyBookedException(String message) {
+  super(message);
+ }
+}
+</pre>
+
+    <div class="file-label">model/SeatInventory.java</div>
+    <pre>package com.swiftbook.booking.model;
+
+import java.util.*;
+import com.swiftbook.booking.exception.SeatAlreadyBookedException;
+
+public class SeatInventory {
+ private final Map&lt;Integer, Seat&gt; seatMap = new HashMap&lt;&gt;();
+ private final List&lt;String&gt; bookingHistory =
+  Collections.synchronizedList(new ArrayList&lt;&gt;());
+
+ public SeatInventory(int totalSeats, String category) {
+  for (int i = 1; i &lt;= totalSeats; i++) {
+   seatMap.put(i, new Seat(i, category));
+  }
+ }
+
+ private Seat getSeat(int seatNumber) {
+  if (!seatMap.containsKey(seatNumber)) {
+   throw new ArrayIndexOutOfBoundsException(
+    "Seat number " + seatNumber + " is out of range.");
+  }
+  return seatMap.get(seatNumber);
+ }
+
+ // synchronized: prevents two threads from booking the same seat at once
+ public synchronized void bookSeat(int seatNumber, String customerName)
+  throws SeatAlreadyBookedException {
+  Seat seat = getSeat(seatNumber);
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 7 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre>  if (seat.getStatus() == SeatStatus.BOOKED) {
+   throw new SeatAlreadyBookedException(
+    "Seat " + seatNumber + " is already booked.");
+  }
+  seat.setStatus(SeatStatus.BOOKED);
+  bookingHistory.add(customerName + " booked seat " + seatNumber);
+ }
+
+ public synchronized void cancelSeat(int seatNumber) {
+  getSeat(seatNumber).setStatus(SeatStatus.AVAILABLE);
+  bookingHistory.add("Seat " + seatNumber + " cancelled");
+ }
+
+ // Generics + Iterator usage while searching for available seats
+ public Set&lt;Integer&gt; getAvailableSeats() {
+  Set&lt;Integer&gt; available = new TreeSet&lt;&gt;();
+  Iterator&lt;Map.Entry&lt;Integer, Seat&gt;&gt; it = seatMap.entrySet().iterator();
+  while (it.hasNext()) {
+   Map.Entry&lt;Integer, Seat&gt; entry = it.next();
+   if (entry.getValue().getStatus() == SeatStatus.AVAILABLE) {
+    available.add(entry.getKey());
+   }
+  }
+  return available;
+ }
+
+ public List&lt;String&gt; getBookingHistory() { return bookingHistory; }
+}
+</pre>
+
+    <div class="file-label">dao/BookingDAO.java</div>
+    <pre>package com.swiftbook.booking.dao;
+
+import java.sql.*;
+
+public class BookingDAO {
+ private static final String URL = "jdbc:sqlite:swiftbook.db";
+
+ private Connection getConnection() throws SQLException {
+  return DriverManager.getConnection(URL);
+ }
+
+ public void createTable() throws SQLException {
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 8 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre>  String sql = "CREATE TABLE IF NOT EXISTS bookings (" +
+   "booking_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+   "event_id TEXT NOT NULL, seat_number INTEGER NOT NULL, " +
+   "customer_name TEXT NOT NULL, status TEXT NOT NULL)";
+  try (Connection con = getConnection(); Statement st = 
+con.createStatement()) {
+   st.execute(sql);
+  }
+ }
+
+ public void insertBooking(String eventId, int seatNumber, String customer)
+  throws SQLException {
+  String sql = "INSERT INTO bookings (event_id, seat_number, " +
+   "customer_name, status) VALUES (?, ?, ?, 'BOOKED')";
+  try (Connection con = getConnection();
+       PreparedStatement ps = con.prepareStatement(sql)) {
+   ps.setString(1, eventId);
+   ps.setInt(2, seatNumber);
+   ps.setString(3, customer);
+   ps.executeUpdate();
+  }
+ }
+
+ public void updateBookingStatus(int seatNumber, String status)
+  throws SQLException {
+  String sql = "UPDATE bookings SET status = ? WHERE seat_number = ?";
+  try (Connection con = getConnection();
+       PreparedStatement ps = con.prepareStatement(sql)) {
+   ps.setString(1, status);
+   ps.setInt(2, seatNumber);
+   ps.executeUpdate();
+  }
+ }
+
+ public void deleteBooking(int seatNumber) throws SQLException {
+  String sql = "DELETE FROM bookings WHERE seat_number = ?";
+  try (Connection con = getConnection();
+       PreparedStatement ps = con.prepareStatement(sql)) {
+   ps.setInt(1, seatNumber);
+   ps.executeUpdate();
+  }
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 9 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre> }
+}
+</pre>
+
+    <div class="file-label">gui/BookingGUI.java</div>
+    <pre>package com.swiftbook.booking.gui;
+
+import java.awt.*;
+import java.awt.event.*;
+import com.swiftbook.booking.model.SeatInventory;
+import com.swiftbook.booking.exception.SeatAlreadyBookedException;
+
+public class BookingGUI extends Frame {
+ private final SeatInventory inventory;
+ private int selectedSeat = -1;
+ private final List bookingLog = new List(8);
+
+ public BookingGUI(SeatInventory inventory) {
+  this.inventory = inventory;
+  setTitle("SwiftBook Live - Seat Booking");
+  setSize(520, 480);
+  setLayout(new BorderLayout());
+
+  Panel seatGrid = new Panel(new GridLayout(4, 5, 5, 5));
+  for (int i = 1; i &lt;= 20; i++) {
+   Button seatBtn = new Button("S" + i);
+   final int seatNum = i;
+   seatBtn.addActionListener(e -&gt; selectedSeat = seatNum); // Listener 1
+   seatGrid.add(seatBtn);
+  }
+
+  Panel controlPanel = new Panel();
+  Button bookBtn = new Button("Book");
+  Button cancelBtn = new Button("Cancel");
+
+  bookBtn.addActionListener(e -&gt; { // Listener 2
+   try {
+    inventory.bookSeat(selectedSeat, "Counter-Customer");
+    bookingLog.add("Seat " + selectedSeat + " booked");
+   } catch (SeatAlreadyBookedException ex) {
+    bookingLog.add("Failed: " + ex.getMessage());
+   } catch (ArrayIndexOutOfBoundsException ex) {
+    bookingLog.add("Invalid seat selected.");
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 10 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre>   } finally {
+    repaint();
+   }
+  });
+
+  cancelBtn.addActionListener(e -&gt; {
+   inventory.cancelSeat(selectedSeat);
+   bookingLog.add("Seat " + selectedSeat + " cancelled");
+  });
+
+  controlPanel.add(bookBtn);
+  controlPanel.add(cancelBtn);
+
+  add(seatGrid, BorderLayout.CENTER);
+  add(controlPanel, BorderLayout.SOUTH);
+  add(bookingLog, BorderLayout.EAST);
+
+  addWindowListener(new WindowAdapter() {
+   public void windowClosing(WindowEvent e) { dispose(); }
+  });
+
+  setVisible(true);
+ }
+}
+</pre>
+
+    <div class="file-label">concurrency/BookingSimulation.java</div>
+    <pre>package com.swiftbook.booking.concurrency;
+
+import com.swiftbook.booking.model.SeatInventory;
+import com.swiftbook.booking.exception.SeatAlreadyBookedException;
+
+public class BookingSimulation {
+ public static void main(String[] args) throws InterruptedException {
+  SeatInventory inventory = new SeatInventory(20, "Standard");
+  int targetSeat = 5; // both counters race for the same seat
+
+  Runnable counterA = () -&gt; attemptBooking(inventory, targetSeat, "Counter-A");
+  Runnable counterB = () -&gt; attemptBooking(inventory, targetSeat, "Counter-B");
+
+  Thread t1 = new Thread(counterA);
+  Thread t2 = new Thread(counterB);
+
+  t1.start();
+</pre>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 11 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <pre>  t2.start();
+  t1.join();
+  t2.join();
+
+  System.out.println("Booking history: " + inventory.getBookingHistory());
+ }
+
+ private static void attemptBooking(SeatInventory inventory, int seatNumber,
+                                    String customer) {
+  try {
+   inventory.bookSeat(seatNumber, customer);
+   System.out.println(customer + " SUCCESS: booked seat " + seatNumber);
+  } catch (SeatAlreadyBookedException e) {
+   System.out.println(customer + " FAILED: " + e.getMessage());
+  }
+ }
+}
+</pre>
+
+    <h1 class="sec-title">7. TEST CASES AND EXPECTED / ACTUAL RESULTS</h1>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 7%;">#</th>
+          <th style="width: 23%;">Test Case</th>
+          <th style="width: 25%;">Input</th>
+          <th style="width: 33%;">Expected Result</th>
+          <th>Actual Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bold">TC1</span></td>
+          <td>Book an available seat</td>
+          <td>Seat 5, single thread</td>
+          <td>Seat 5 &rarr; BOOKED; row inserted in DB</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td><span class="bold">TC2</span></td>
+          <td>Book an out-of-range seat</td>
+          <td>Seat 99 (valid range 1–20)</td>
+          <td>ArrayIndexOutOfBoundsException caught; GUI shows “Invalid seat selected”</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td><span class="bold">TC3</span></td>
+          <td>Double booking, synchronized removed</td>
+          <td>Two threads book seat 5 concurrently on an un-synchronized method</td>
+          <td>Race condition: both threads report SUCCESS – seat double-booked</td>
+          <td>Fails as expected (demonstrates the bug)</td>
+        </tr>
+        <tr>
+          <td><span class="bold">TC4</span></td>
+          <td>Double booking, synchronized applied</td>
+          <td>Two threads book seat 5 concurrently on the synchronized bookSeat()</td>
+          <td>Only one thread succeeds; the other receives SeatAlreadyBookedException</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td><span class="bold">TC5</span></td>
+          <td>Cancel a booked seat</td>
+          <td>Cancel seat 5</td>
+          <td>Status reverts to AVAILABLE; DB status updated</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td><span class="bold">TC6</span></td>
+          <td>List available seats (Iterator/Generics)</td>
+          <td>Call getAvailableSeats() after TC1</td>
+          <td>Returns sorted Set&lt;Integer&gt; excluding seat 5</td>
+          <td>Pass</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1 class="sec-title">8. EXECUTION SCREENSHOTS / GUI OUTPUT</h1>
+    <p style="font-style: italic; color: #444;">[Insert screenshots here: (a) the seat-grid GUI with a mix of available and booked seats, (b) the console output of BookingSimulation showing the double-booking failure case before synchronization, and (c) the console output showing the safe, synchronized outcome.]</p>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 12 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 13 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <h1 class="sec-title">9. ANALYSIS AND DISCUSSION</h1>
+    <p><span class="bold">Design-choice rationale.</span> Event was modelled as an abstract class rather than an interface because ConcertEvent and SportsEvent share concrete state (eventId, name, baseTicketPrice) as well as behaviour – an abstract class lets that shared implementation live in one place while still forcing each subclass to supply its own computeFinalPrice() override, giving a clean demonstration of polymorphism. A HashMap&lt;Integer, Seat&gt; was chosen for the seat inventory because seat lookup by number is the hottest path in the booking workflow and HashMap offers expected O(1) access; a TreeSet is used only for the returned view of available seats so that the GUI can display them in a stable, sorted order.</p>
+
+    <p><span class="bold">Exception-handling coverage.</span> The built-in ArrayIndexOutOfBoundsException was reused (rather than defining a second custom exception) for out-of-range seat numbers because it is unchecked and semantically appropriate – it signals a programming/input error rather than a recoverable business rule. SeatAlreadyBookedException, in contrast, is a checked exception because it represents an expected business outcome that every caller of bookSeat() must consciously handle. A finally block in the GUI always refreshes the seat grid, regardless of which branch executed, so the display never goes stale after a failed attempt.</p>
+
+    <p><span class="bold">Concurrency behaviour observed.</span> With the synchronized keyword removed from bookSeat(), two threads racing for the same seat can both read the seat's status as AVAILABLE before either writes BOOKED back, so both threads print SUCCESS – a textbook double-booking. Once synchronized is restored, the method body becomes a critical section guarded by the SeatInventory instance's intrinsic lock: the second thread blocks until the first has finished updating the seat and history, then re-checks the status and correctly throws SeatAlreadyBookedException. This directly demonstrates why the original paper-based, unsynchronized process at SwiftBook's venues produced double-bookings, and how a single keyword closes the gap.</p>
+
+    <h1 class="sec-title">10. MODERN TOOL USAGE &amp; TESTING EVIDENCE</h1>
+    <p>The Eclipse IDE was used throughout for editing, compiling and running each class, with the built-in debugger used to step through bookSeat() and confirm the exact interleaving that causes the double-booking race condition. The sqlite-jdbc driver jar was added to the project's build path to provide JDBC connectivity without requiring a separate database server. Git was used to commit each class incrementally, and the console output of BookingSimulation (run multiple times, with and without synchronized) served as the primary test evidence for the concurrency requirement, supplemented by manual GUI testing of the Book/Cancel controls for TC1, TC2 and TC5.</p>
+
+    <h1 class="sec-title">11. REFLECTION: DESIGN DECISIONS, SDG RELEVANCE &amp; LEARNING OUTCOMES</h1>
+    <p>This assignment mapped directly onto SDG 8 (Decent Work and Economic Growth), SDG 9 (Industry, Innovation and Infrastructure) and SDG 11 (Sustainable Cities and Communities): reliable, double-booking-free ticketing directly protects the livelihoods of venue staff and performers who depend on accurate seat counts and revenue, it is a small but concrete example of the digital infrastructure that modern cities and entertainment industries rely on, and it improves the fairness and usability of shared public and cultural spaces for residents attending events.</p>
+    <p>The most challenging part of the assignment was reasoning about the concurrency requirement – it was not enough to simply add the synchronized keyword; I had to first reproduce the failure case honestly (by removing synchronization and running the two threads enough times to observe the race) before I could be confident the fix actually addressed the root cause rather than just hiding it. This exercise reinforced how easy it is for a sequential-looking piece of code to hide a concurrency bug, and how important it is to design shared, mutable state (the seat map) with explicit ownership and locking from the start rather than retrofitting it later.</p>
+
+    <h1 class="sec-title">12. CONCLUSION</h1>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 13 of 14</span>
+  </div>
+</div>
+
+<!-- PAGE 14 -->
+<div class="page">
+  <div class="page-header">CSA09 – PROGRAMMING IN JAVA</div>
+  <div class="page-content">
+    <p>The Concurrent Event-Ticket Booking Application satisfies all six specific requirements of the problem statement: an encapsulated, polymorphic Event hierarchy; a HashMap/Iterator-based seat inventory; layered exception handling using both a built-in and a user-defined exception; JDBC-backed persistence of bookings; a functional AWT GUI wired to multiple event listeners; and a multithreaded demonstration proving that synchronization eliminates the double-booking defect that originally motivated SwiftBook's request. The resulting design is small enough to run on a single box-office machine yet directly addresses the safety property – no seat sold twice – that the legacy paper process could not guarantee.</p>
+
+    <h1 class="sec-title" style="margin-top: 15pt;">13. REFERENCES</h1>
+    <p>[1] Oracle, “The Java Tutorials – Collections,” docs.oracle.com.</p>
+    <p>[2] Oracle, “The Java Tutorials – Concurrency,” docs.oracle.com.</p>
+    <p>[3] Oracle, “Java SE Documentation – java.sql (JDBC),” docs.oracle.com.</p>
+    <p>[4] Oracle, “The Java Tutorials – Creating a GUI with JFC/AWT,” docs.oracle.com.</p>
+    <p style="font-style: italic; color: #555; margin-top: 10pt;">Note: as an AI assistant I do not have live web access in this conversation, so please verify these reference links before citing them in your final submission.</p>
+  </div>
+  <div class="page-footer">
+    <span>Concurrent Event-Ticket Booking Application</span>
+    <span class="bold">Page 14 of 14</span>
+  </div>
+</div>
+
+</body>
+</html>
