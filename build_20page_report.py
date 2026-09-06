@@ -41,16 +41,16 @@ def add_body_p(doc, text, bold_prefix=None, italic=False):
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(2)
     p.paragraph_format.space_after = Pt(4)
-    p.paragraph_format.line_spacing = 1.18
+    p.paragraph_format.line_spacing = 1.5
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     if bold_prefix:
         r_pre = p.add_run(bold_prefix)
         r_pre.bold = True
         r_pre.font.name = "Liberation Serif"
-        r_pre.font.size = Pt(10)
+        r_pre.font.size = Pt(9.5)
     run = p.add_run(text)
     run.font.name = "Liberation Serif"
-    run.font.size = Pt(10)
+    run.font.size = Pt(9.5)
     run.italic = italic
     return p
 
@@ -58,16 +58,16 @@ def add_bullet_item(doc, title, text):
     p = doc.add_paragraph(style='List Bullet')
     p.paragraph_format.space_before = Pt(2)
     p.paragraph_format.space_after = Pt(3)
-    p.paragraph_format.line_spacing = 1.15
+    p.paragraph_format.line_spacing = 1.5
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     if title:
         r1 = p.add_run(title + " ")
         r1.bold = True
         r1.font.name = "Liberation Serif"
-        r1.font.size = Pt(10)
+        r1.font.size = Pt(9.5)
     r2 = p.add_run(text)
     r2.font.name = "Liberation Serif"
-    r2.font.size = Pt(10)
+    r2.font.size = Pt(9.5)
     return p
 
 def add_code_block(doc, code_text):

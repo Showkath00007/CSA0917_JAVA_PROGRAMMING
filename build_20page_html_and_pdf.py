@@ -974,16 +974,19 @@ html_template = f"""<!DOCTYPE html>
     margin-bottom: 3pt;
   }}
   p {{
-    margin: 0 0 6pt 0;
+    margin: 0 0 5pt 0;
     text-align: justify;
+    line-height: 1.5;
   }}
   ul {{
-    margin: 0 0 6pt 0;
+    margin: 0 0 5pt 0;
     padding-left: 18pt;
+    line-height: 1.5;
   }}
   li {{
     margin-bottom: 3pt;
     text-align: justify;
+    line-height: 1.5;
   }}
   table {{
     width: 100%;
